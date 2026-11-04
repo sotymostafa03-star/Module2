@@ -1,18 +1,12 @@
-"""CatalogService: the read side of PinjamLab, over the same fixed CSV the
-C++ tree loads. Sharing the input file is what makes the cross-language
-comparison a measurement rather than an anecdote.
-"""
 from __future__ import annotations
 
 import csv
 from dataclasses import dataclass
-from pathlib import Path
-from typing import Optional
 
-from .structures.repository import Repository
+from pinjamlab.structures.repository import Repository
 
 
-@dataclass(frozen=True)
+@dataclass
 class Item:
     tag: str
     model: str
@@ -23,16 +17,17 @@ class Item:
 
 class CatalogService:
     def __init__(self) -> None:
-        self._repo: Repository[Item, str] = Repository(lambda i: i.tag)
+        self._repo = Repository(lambda item: item.tag)
         self._rejected = 0
 
-    def load(self, path: str | Path) -> int:
-        """Returns the number of rows accepted. Duplicate tags are rejected,
-        not overwritten: one asset tag identifies one asset."""
+    def load(self, path: str) -> int:
         accepted = 0
         self._rejected = 0
-        with open(path, newline="", encoding="utf-8") as fh:
-            for row in csv.DictReader(fh):
+
+        with open(path, "r", encoding="utf-8", newline="") as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
                 item = Item(
                     tag=row["tag"],
                     model=row["model"],
@@ -40,30 +35,48 @@ class CatalogService:
                     daily_fine=int(row["daily_fine"]),
                     condition=row["condition"],
                 )
+
                 if self._repo.add(item):
                     accepted += 1
                 else:
                     self._rejected += 1
+
         return accepted
 
     def search(self, query: str) -> list[Item]:
-        """Case-insensitive substring match over tag and model.
-
-        O(n) by design: a substring search is not a key lookup, and no hash
-        index can answer one. The Lab 2 defect is a CALLER that runs this
-        inside a loop, not this function.
-        """
+        """Case-insensitive search with O(n) average-time deduplication."""
         q = query.lower()
-        return [i for i in self._repo.all()
-                if q in i.tag.lower() or q in i.model.lower()]
+        matches: list[Item] = []
+
+        for item in self._repo.all():
+            if q in item.tag.lower():
+                matches.append(item)
+
+        for item in self._repo.all():
+            if q in item.model.lower():
+                matches.append(item)
+
+        seen: set[str] = set()
+        unique: list[Item] = []
+
+        for item in matches:
+            if item.tag not in seen:
+                seen.add(item.tag)
+                unique.append(item)
+
+        return unique
 
     def by_category(self, category: str) -> list[Item]:
-        return [i for i in self._repo.all() if i.category == category]
+        return [
+            item
+            for item in self._repo.all()
+            if item.category == category
+        ]
 
     def contains(self, tag: str) -> bool:
         return self._repo.contains(tag)
 
-    def by_tag(self, tag: str) -> Optional[Item]:
+    def by_tag(self, tag: str) -> Item | None:
         return self._repo.find_by_id(tag)
 
     @property
