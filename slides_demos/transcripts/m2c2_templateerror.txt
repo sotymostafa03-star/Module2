@@ -1,0 +1,23 @@
+In file included from slides_demos/cpp/m2c2_templateerror.cpp:12:
+cpp/include/pinjamlab/structures/hash_map.hpp: In instantiation of 'std::size_t pinjamlab::structures::HashMap<K, V, Hash>::bucketOf(const K&) const [with K = AssetTag; V = std::__cxx11::basic_string<char>; Hash = std::hash<AssetTag>; std::size_t = long long unsigned int]':
+cpp/include/pinjamlab/structures/hash_map.hpp:64:31:   required from 'bool pinjamlab::structures::HashMap<K, V, Hash>::insert(const K&, const V&) [with K = AssetTag; V = std::__cxx11::basic_string<char>; Hash = std::hash<AssetTag>]'
+   64 |         const std::size_t b = bucketOf(key);
+      |                               ^~~~~~~~
+slides_demos/cpp/m2c2_templateerror.cpp:23:19:   required from here
+   23 |     catalog.insert(AssetTag{"LP-001"}, "ThinkPad T14");
+      |     ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cpp/include/pinjamlab/structures/hash_map.hpp:112:22: error: could not convert '<brace-enclosed initializer list>()' from '<brace-enclosed initializer list>' to 'std::__hash_not_enabled<AssetTag>'
+  112 |         return Hash{}(key) % buckets_.size();
+      |                ~~~~~~^~~~~
+      |                      |
+      |                      <brace-enclosed initializer list>
+cpp/include/pinjamlab/structures/hash_map.hpp:112:22: error: use of deleted function 'std::hash<AssetTag>::~hash()'
+In file included from C:/Users/Amirul/scoop/apps/gcc/15.2.0/include/c++/15.2.0/functional:57,
+                 from cpp/include/pinjamlab/structures/hash_map.hpp:9:
+C:/Users/Amirul/scoop/apps/gcc/15.2.0/include/c++/15.2.0/bits/functional_hash.h:104:12: note: 'std::hash<AssetTag>::~hash()' is implicitly deleted because the default definition would be ill-formed:
+  104 |     struct hash
+      |            ^~~~
+C:/Users/Amirul/scoop/apps/gcc/15.2.0/include/c++/15.2.0/bits/functional_hash.h:104:12: error: use of deleted function 'std::__hash_not_enabled<_Tp>::~__hash_not_enabled() [with _Tp = AssetTag]'
+C:/Users/Amirul/scoop/apps/gcc/15.2.0/include/c++/15.2.0/bits/functional_hash.h:87:7: note: declared here
+   87 |       ~__hash_not_enabled() = delete;
+      |       ^

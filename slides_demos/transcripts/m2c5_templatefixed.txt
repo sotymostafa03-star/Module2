@@ -1,0 +1,3 @@
+compiled. size=2  bucket of LP-001 = 0
+LP-001 -> ThinkPad T14
+XX-999 -> (absent)

@@ -1,0 +1,2 @@
+dict -> RuntimeError: dictionary changed size during iteration
+list -> no error, left with ['LP-002', 'LP-004'] - expected [] if all were visited

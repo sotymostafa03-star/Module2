@@ -1,0 +1,7 @@
+      rows    scan (ms) indexed (ms)      ratio      same?
+       500        176.1          2.8      63.6x        yes
+      2000       2768.1         11.4     242.9x        yes
+
+rows x4  ->  scan x15.7,  index x4.1
+rows scanned per category query: 2000 for the scan, 1 for the index
+Both columns above returned the same answer. Only the time differs.

@@ -1,0 +1,19 @@
+1. pushFront: link the new node FIRST, then move the head
+   after 1 pushFront  [OS-003]  size=1  nodes alive=1
+   after 2 pushFront  [LP-002 -> OS-003]  size=2  nodes alive=2
+   after 3 pushFront  [LP-001 -> LP-002 -> OS-003]  size=3  nodes alive=3
+
+2. insertAfter(0, "PR-014") -- O(1) relink once you hold the node
+   after insertAfter  [LP-001 -> PR-014 -> LP-002 -> OS-003]  size=4  nodes alive=4
+
+3. erase(2) -- relink around the victim, THEN delete it
+   after erase(2)     [LP-001 -> PR-014 -> OS-003]  size=3  nodes alive=3
+
+4. the Rule of Five copy is a DEEP copy, not a shared chain
+   copied: nodes alive=6  (doubled -- two independent chains)
+   backup after erase [PR-014 -> OS-003]  size=2  nodes alive=5
+   shelf UNCHANGED    [LP-001 -> PR-014 -> OS-003]  size=3  nodes alive=5
+
+5. both lists go out of scope here...
+   nodes built over the whole run = 11
+   nodes still alive after scope  = 0   <- 0 means every node was freed

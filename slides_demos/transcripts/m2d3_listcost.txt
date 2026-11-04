@@ -1,0 +1,8 @@
+Python 3.12.9 -- scanning 10,000 elements for a value that is not there
+  (median of 7 repeats after one discarded warm-up)
+
+  built-in list                    133.1 us per full scan
+  hand-built LinkedList           1146.3 us per full scan
+
+  ratio: the hand-built list is 8.6x SLOWER
+  Both are O(n). Complexity predicted a tie; the constant factor did not.

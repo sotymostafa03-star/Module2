@@ -1,0 +1,47 @@
+m2c6_crossover -- INVESTIGATION LOG, not a publishable measurement.
+g++ 15.2.0 -O2, Windows 11. Keys hoisted out of the timed region.
+
+     n    vector (ns)   hashmap (ns)     winner
+     1            3.3            3.6     vector
+     2            8.1            7.7    hashmap
+     3            9.3            9.1    hashmap
+     4           11.4           10.9    hashmap
+     5           16.5           15.9    hashmap
+     6           18.8           16.6    hashmap
+     8           25.1           25.3     vector
+    10           28.6           29.4     vector
+    12           43.1           38.6    hashmap
+    16           44.8           49.7     vector
+    24           53.0            9.4    hashmap
+    32           71.3           10.3    hashmap
+    64          124.5           10.5    hashmap
+
+The hash map first wins at n = 2.
+
+ISOLATION TEST -- map.find() timed alone, no vector loop before it,
+batch raised from 100k to 2M to rule out warm-up / frequency ramp:
+
+     n  map only (ns)      buckets
+     1            4.2            2
+     2           10.1            5
+     4           13.3           11
+     8           20.9           17
+    12           27.0           29
+    16           40.8           37
+    20           43.8           41
+    24            8.6           53
+    32            9.2           67
+    64            9.5          137
+
+FINDING: std::unordered_map::find costs ~9 ns for n >= 24 (as expected
+for O(1)) but rises to ~44 ns as n approaches 20 from below, then drops
+discontinuously at n = 24. The effect is reproducible, survives a 20x
+larger batch, and persists with the vector loop removed -- so it is not
+warm-up, not frequency ramp, and not contamination from the scan.
+
+It is therefore NOT safe to read a crossover point off this harness.
+No crossover number from this program appears on any slide. The Week 6
+deck cites only the bound that the module's own committed benchmark
+supports: at n = 100 the hash already wins by ~20x, so the crossover
+lies below 100. Finding it precisely is Lab 3.4's job, on the student's
+own machine, with a harness they have interrogated the way this one was.

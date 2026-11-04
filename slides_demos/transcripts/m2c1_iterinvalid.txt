@@ -1,0 +1,12 @@
+BEFORE  buffer=000002017a602510  size=4  capacity=5  *it=LP-002
+push 5  buffer=000002017a602510  size=5  capacity=5  (no reallocation)
+push 6  buffer=000002017a6025c0  size=6  capacity=10  <- buffer MOVED
+
+the buffer moved by 176 bytes
+`it` still holds the OLD address. Dereferencing it now is
+undefined behaviour: the block is freed, and *it usually
+still reads "LP-002" because nothing has reused it yet.
+
+That is why the test passes and the bug ships.
+The safe answer is an INDEX, which survives reallocation:
+  shelf[2] = LP-002

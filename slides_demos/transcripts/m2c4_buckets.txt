@@ -1,0 +1,14 @@
+20 asset tags, every one 6 characters long.
+
+std::hash<std::string>  -- spreads
+  buckets=32  size=20  load=0.625  rehashes=2
+  chain lengths: 2 1 0 2 1 0 2 1 0 1 0 1 2 0 2 0 0 0 0 0 2 1 0 0 1 0 0 0 0 0 1 0
+  longest chain=2  buckets used=14/32  avg comparisons per successful lookup=1.3
+
+LengthHash (Pitfall C4) -- does not
+  buckets=32  size=20  load=0.625  rehashes=2
+  chain lengths: 0 0 0 0 0 0 20 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  longest chain=20  buckets used=1/32  avg comparisons per successful lookup=10.5
+
+Both maps return the correct value for all 20 keys.
+LengthHash lookups correct: 20/20  <- the test suite stays green while the map degrades to a list.

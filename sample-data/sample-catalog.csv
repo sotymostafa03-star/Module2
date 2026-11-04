@@ -1,0 +1,21 @@
+tag,model,category,daily_fine,condition
+LP-001,ThinkPad T14,Computing,50000,GOOD
+PR-014,Epson EB-S41,Optics,35000,GOOD
+LP-002,Latitude 5440,Computing,50000,GOOD
+OS-003,Rigol DS1054Z,Instrumentation,60000,NEEDS_CHECK
+MC-007,Olympus CX23,Optics,75000,GOOD
+RA-001,Dobot Magician,Robotics,120000,GOOD
+LP-003,ProBook 450,Computing,50000,GOOD
+SP-002,Hach DR900,Instrumentation,90000,GOOD
+MC-008,Zeiss Primostar,Optics,75000,NEEDS_CHECK
+OS-004,Tektronix TBS1052,Instrumentation,60000,GOOD
+RA-002,UArm Swift Pro,Robotics,120000,GOOD
+LP-004,MacBook Air M2,Computing,55000,GOOD
+TC-001,FLIR E8-XT,Thermal,110000,GOOD
+PR-015,BenQ MS550,Optics,35000,GOOD
+SP-003,Shimadzu UV-1900,Instrumentation,150000,NEEDS_CHECK
+MC-009,Nikon E200,Optics,75000,GOOD
+LP-005,Legion 5 Pro,Computing,55000,GOOD
+TC-002,Fluke Ti32,Thermal,110000,NEEDS_CHECK
+RA-003,Niryo Ned2,Robotics,120000,GOOD
+OS-005,Siglent SDS1104,Instrumentation,60000,GOOD

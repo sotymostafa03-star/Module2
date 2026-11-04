@@ -1,0 +1,3 @@
+pushed two ints, total = 7
+pushed a str into Stack[int]: no error, no warning, nothing
+failure arrives HERE, not at the push: unsupported operand type(s) for +: 'int' and 'str'

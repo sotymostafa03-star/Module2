@@ -1,0 +1,56 @@
+tag,model,category,daily_fine,condition
+AU-001,Shure SM58 Microphone,Audio,25000,GOOD
+AU-002,Audio-Technica AT2020,Audio,35000,GOOD
+AU-003,Focusrite Scarlett 2i2,Audio,45000,GOOD
+AU-004,Yamaha MG10XU Mixer,Audio,60000,GOOD
+AU-005,JBL Professional 305P,Audio,50000,NEEDS_CHECK
+AU-006,Rode NT1 Microphone,Audio,40000,GOOD
+AU-007,Behringer UMC22,Audio,20000,GOOD
+AU-008,Sennheiser HD 280 Pro,Audio,25000,GOOD
+AU-009,Zoom H5 Recorder,Audio,45000,NEEDS_CHECK
+AU-010,Bose S1 Pro Speaker,Audio,75000,GOOD
+FU-001,Steelcase Series 1 Chair,Furniture,30000,GOOD
+FU-002,IKEA Bekant Desk,Furniture,35000,GOOD
+FU-003,Ergotron LX Monitor Arm,Furniture,25000,GOOD
+FU-004,Mobile Storage Cabinet,Furniture,20000,GOOD
+FU-005,Adjustable Lab Stool,Furniture,15000,NEEDS_CHECK
+FU-006,Conference Table 180cm,Furniture,40000,GOOD
+FU-007,Bookshelf Metal 5 Tier,Furniture,20000,GOOD
+FU-008,Ergonomic Office Chair,Furniture,30000,GOOD
+FU-009,Portable Workbench,Furniture,45000,GOOD
+FU-010,Display Cabinet Glass,Furniture,35000,NEEDS_CHECK
+NW-001,Cisco Catalyst 2960 Switch,Networking,80000,GOOD
+NW-002,TP-Link Archer AX55,Networking,35000,GOOD
+NW-003,Ubiquiti UniFi AP AC Pro,Networking,50000,GOOD
+NW-004,MikroTik RB4011 Router,Networking,60000,GOOD
+NW-005,Netgear GS308 Switch,Networking,25000,GOOD
+NW-006,Cisco ISR 4331 Router,Networking,100000,NEEDS_CHECK
+NW-007,TP-Link TL-SG1024 Switch,Networking,45000,GOOD
+NW-008,UniFi Cloud Key Gen2,Networking,40000,GOOD
+NW-009,Fiber Optic Media Converter,Networking,30000,GOOD
+NW-010,Linksys Velop Mesh Router,Networking,55000,GOOD
+PW-001,APC Smart-UPS 1500,Power,90000,GOOD
+PW-002,CyberPower CP1500,Power,75000,GOOD
+PW-003,Mean Well RSP-500 Power Supply,Power,45000,GOOD
+PW-004,Fluke 117 Multimeter,Power,60000,GOOD
+PW-005,UNI-T UT210E Clamp Meter,Power,35000,GOOD
+PW-006,Programmable DC Power Supply,Power,80000,NEEDS_CHECK
+PW-007,APC Surge Protector,Power,20000,GOOD
+PW-008,Digital Power Meter,Power,40000,GOOD
+PW-009,Extech EX330 Multimeter,Power,30000,GOOD
+PW-010,Portable Inverter 1000W,Power,65000,NEEDS_CHECK
+AU-011,Yamaha HS5 Studio Monitor,Audio,55000,GOOD
+AU-012,AKG P120 Condenser Microphone,Audio,30000,GOOD
+FU-011,Standing Desk Converter,Furniture,35000,GOOD
+FU-012,Office Visitor Chair,Furniture,18000,GOOD
+NW-011,D-Link DGS-1210 Switch,Networking,50000,GOOD
+NW-012,TP-Link Omada Controller,Networking,45000,NEEDS_CHECK
+PW-011,Digital Bench Power Supply,Power,70000,GOOD
+PW-012,Voltage Stabilizer 1000VA,Power,40000,GOOD
+AU-013,Presonus AudioBox USB,Audio,35000,NEEDS_CHECK
+FU-013,Mobile Equipment Trolley,Furniture,25000,GOOD
+NW-013,Aruba Instant On AP22,Networking,55000,GOOD
+PW-013,Digital Clamp Multimeter,Power,45000,GOOD
+AU-001,Shure SM58 Microphone,Audio,25000,GOOD
+NW-005,Netgear GS308 Switch,Networking,25000,GOOD
+PW-003,Mean Well RSP-500 Power Supply,Power,45000,GOOD
